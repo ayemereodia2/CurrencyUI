@@ -59,6 +59,9 @@
 		04DC88D822F8822400C92415 = {
 			isa = PBXGroup;
 			children = (
+				04DC890622F8825C00C92415 /* Controllers */,
+				04DC890522F8825600C92415 /* Views */,
+				04DC890422F8823600C92415 /* Models */,
 				04DC88E322F8822400C92415 /* CurrencyUI */,
 				04DC88F822F8822500C92415 /* CurrencyUIUITests */,
 				04DC88E222F8822400C92415 /* Products */,
@@ -94,6 +97,27 @@
 				04DC88FB22F8822500C92415 /* Info.plist */,
 			);
 			path = CurrencyUIUITests;
+			sourceTree = "<group>";
+		};
+		04DC890422F8823600C92415 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04DC890522F8825600C92415 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04DC890622F8825C00C92415 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

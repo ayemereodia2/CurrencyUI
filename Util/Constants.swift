@@ -15,11 +15,14 @@ let amount = ""
 
 let API_KEY = "ce3e30efe9b04c54bdc8f8aeb2b258a6"
 
-let BASE_ULR = "https://swapi.co/api/latest?access_key=\(API_KEY)"
+let SYMBOLS_URL = "http://data.fixer.io/api/symbols?access_key =\(API_KEY)"
 
-let SYMBOLS = BASE_ULR + "&base=GBP&symbols=USD,AUD,CAD,PLN,MXN"
+let BASE_URL = "https://data.fixer.io/api/convert?access_key=\(API_KEY)"
 
-let CONVERT = BASE_ULR + "&from=\(from)&to=\(to)&amount=\(amount)"
+let SYMBOLS = BASE_URL + "&base=GBP&symbols=USD,AUD,CAD,PLN,MXN"
 
-//typealias personReturnCompletion = (Person?)->()
+let CONVERT = BASE_URL + "&from=\(from)&to=\(to)&amount=\(amount)"
 
+typealias conversionReturnCompletion = (ConvertionResp?)->()
+
+//http://data.fixer.io/api/convert?access_key=ce3e30efe9b04c54bdc8f8aeb2b258a6

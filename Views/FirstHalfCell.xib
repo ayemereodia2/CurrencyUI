@@ -48,7 +48,7 @@
                             <constraint firstAttribute="width" constant="148" id="SKy-OX-44L"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                        <color key="textColor" red="0.0" green="0.50196078430000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.0" textAlignment="natural" minimumFontSize="17" background="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="3HC-CO-Rbv" customClass="FieldView" customModule="CurrencyUI" customModuleProvider="target">
@@ -79,7 +79,7 @@
                             <constraint firstAttribute="height" constant="42" id="rPN-t0-1wM"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="NGR">
+                        <state key="normal" title="---">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
@@ -94,7 +94,7 @@
                             <constraint firstAttribute="width" constant="108" id="cBN-qt-BDA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="JPN">
+                        <state key="normal" title="---">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
@@ -119,6 +119,9 @@
                         <state key="normal" title="Convert">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="convertValues:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="80P-8x-dSv"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa8-9i-FcK">
                         <rect key="frame" x="33" y="378" width="257" height="18"/>
@@ -162,7 +165,7 @@
                             <constraint firstAttribute="width" constant="23" id="NhQ-Yw-Wsg"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdK-9f-3BN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdK-9f-3BN">
                         <rect key="frame" x="295" y="158" width="35" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="Wkg-vt-vJH"/>
@@ -172,7 +175,7 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGp-X4-Ec6">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGp-X4-Ec6">
                         <rect key="frame" x="295" y="205" width="35" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="8se-m8-reG"/>
@@ -182,6 +185,14 @@
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aSL-IW-wdt">
+                        <rect key="frame" x="177.5" y="292" width="20" height="20"/>
+                        <color key="tintColor" red="0.1764705882" green="0.87058823529999996" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="QcG-uS-t7S"/>
+                        </constraints>
+                        <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Wmr-B3-4RS" firstAttribute="top" secondItem="s6j-dF-pCY" secondAttribute="bottom" constant="21" id="01P-rR-Wb2"/>
@@ -190,9 +201,11 @@
                     <constraint firstItem="mpa-AT-Ifx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="4Jh-Lw-bLs"/>
                     <constraint firstItem="85u-bj-lPA" firstAttribute="top" secondItem="mpa-AT-Ifx" secondAttribute="bottom" constant="28" id="4fY-d8-8Mh"/>
                     <constraint firstItem="34d-hV-x71" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5YA-AV-yhi"/>
+                    <constraint firstItem="aSL-IW-wdt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6BK-lN-S2p"/>
                     <constraint firstItem="Wa8-9i-FcK" firstAttribute="leading" secondItem="dkk-1v-xQD" secondAttribute="leading" constant="1" id="85g-i4-ZT2"/>
                     <constraint firstItem="NdK-9f-3BN" firstAttribute="top" secondItem="34d-hV-x71" secondAttribute="bottom" constant="118" id="8hi-bq-5bZ"/>
                     <constraint firstItem="34d-hV-x71" firstAttribute="leading" secondItem="m1o-g4-fwb" secondAttribute="trailing" constant="237" id="AQH-T8-pxM"/>
+                    <constraint firstItem="nUO-k3-Nqh" firstAttribute="leading" secondItem="aSL-IW-wdt" secondAttribute="trailing" constant="37.5" id="C0Z-uC-B86"/>
                     <constraint firstItem="mpa-AT-Ifx" firstAttribute="top" secondItem="3HC-CO-Rbv" secondAttribute="bottom" constant="6" id="CV9-KJ-C5F"/>
                     <constraint firstItem="dkk-1v-xQD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="DfE-H7-bNb"/>
                     <constraint firstItem="85u-bj-lPA" firstAttribute="leading" secondItem="Vmx-R7-Bw6" secondAttribute="trailing" constant="43" id="Fkh-TK-B4L"/>
@@ -227,15 +240,18 @@
                     <constraint firstItem="Wmr-B3-4RS" firstAttribute="top" secondItem="85u-bj-lPA" secondAttribute="bottom" constant="32" id="efj-Yk-9fb"/>
                     <constraint firstItem="Wa8-9i-FcK" firstAttribute="leading" secondItem="mpa-AT-Ifx" secondAttribute="leading" id="eiD-4f-gXn"/>
                     <constraint firstItem="Wmr-B3-4RS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="gVc-nL-use"/>
+                    <constraint firstItem="aSL-IW-wdt" firstAttribute="leading" secondItem="s6j-dF-pCY" secondAttribute="trailing" constant="36.5" id="hIT-0s-Eus"/>
                     <constraint firstAttribute="trailingMargin" secondItem="9kN-bC-UDX" secondAttribute="trailing" constant="29" id="hje-Jw-KWX"/>
                     <constraint firstAttribute="trailingMargin" secondItem="DGp-X4-Ec6" secondAttribute="trailing" constant="29" id="k42-7u-pa2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="3HC-CO-Rbv" secondAttribute="trailing" constant="16" id="kG0-jU-IyL"/>
+                    <constraint firstItem="aSL-IW-wdt" firstAttribute="top" secondItem="wth-a9-acH" secondAttribute="bottom" constant="2" id="mC5-kO-TyL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="NdK-9f-3BN" secondAttribute="trailing" constant="29" id="mh7-YR-gBS"/>
                     <constraint firstItem="Vmx-R7-Bw6" firstAttribute="leading" secondItem="wth-a9-acH" secondAttribute="trailing" constant="17" id="olG-1b-Asx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="mpa-AT-Ifx" secondAttribute="trailing" constant="16" id="opw-UG-5sD"/>
                     <constraint firstItem="dkk-1v-xQD" firstAttribute="top" secondItem="m1o-g4-fwb" secondAttribute="bottom" constant="8" id="p1K-iV-Brg"/>
                     <constraint firstItem="Wa8-9i-FcK" firstAttribute="top" secondItem="Wmr-B3-4RS" secondAttribute="bottom" constant="13" id="pO2-X2-HRJ"/>
                     <constraint firstItem="mpa-AT-Ifx" firstAttribute="width" secondItem="3HC-CO-Rbv" secondAttribute="width" id="q1b-cW-clY"/>
+                    <constraint firstItem="Wmr-B3-4RS" firstAttribute="top" secondItem="aSL-IW-wdt" secondAttribute="bottom" constant="8" id="sWv-b4-aEz"/>
                     <constraint firstItem="DGp-X4-Ec6" firstAttribute="top" secondItem="3HC-CO-Rbv" secondAttribute="bottom" constant="16" id="u23-CQ-M5T"/>
                     <constraint firstItem="Wa8-9i-FcK" firstAttribute="leading" secondItem="3HC-CO-Rbv" secondAttribute="leading" id="vje-95-ciT"/>
                     <constraint firstItem="Wa8-9i-FcK" firstAttribute="leading" secondItem="s6j-dF-pCY" secondAttribute="leading" id="wVl-L6-iL0"/>
@@ -246,11 +262,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="fromCurrencyButton" destination="s6j-dF-pCY" id="5Zd-x0-dix"/>
                 <outlet property="fromCurrencyTextField" destination="3HC-CO-Rbv" id="25s-ws-psc"/>
                 <outlet property="fromLabel" destination="NdK-9f-3BN" id="R6W-u3-uE5"/>
                 <outlet property="headingLabel" destination="dkk-1v-xQD" id="QsX-PZ-msj"/>
                 <outlet property="midButton" destination="Wa8-9i-FcK" id="A67-Bp-HMa"/>
-                <outlet property="toCurrencyButton" destination="nUO-k3-Nqh" id="njG-e9-4C4"/>
+                <outlet property="spinner" destination="aSL-IW-wdt" id="tcM-0V-Hja"/>
+                <outlet property="toCurrencyButton" destination="nUO-k3-Nqh" id="Rbk-FF-gCb"/>
                 <outlet property="toCurrencyTextField" destination="mpa-AT-Ifx" id="vsR-KD-XdE"/>
                 <outlet property="toLabel" destination="DGp-X4-Ec6" id="cIk-nf-TdN"/>
             </connections>

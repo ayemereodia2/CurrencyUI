@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041EB8F222FB64C000800ABB /* FixerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EB8F122FB64C000800ABB /* FixerService.swift */; };
+		041EB8F422FB657B00800ABB /* ConvertionResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EB8F322FB657B00800ABB /* ConvertionResp.swift */; };
 		04DC88E522F8822400C92415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC88E422F8822400C92415 /* AppDelegate.swift */; };
 		04DC88EA22F8822400C92415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DC88E822F8822400C92415 /* Main.storyboard */; };
 		04DC88EC22F8822500C92415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DC88EB22F8822500C92415 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041EB8F122FB64C000800ABB /* FixerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerService.swift; sourceTree = "<group>"; };
+		041EB8F322FB657B00800ABB /* ConvertionResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertionResp.swift; sourceTree = "<group>"; };
 		04DC88E122F8822400C92415 /* CurrencyUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DC88E422F8822400C92415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DC88E922F8822400C92415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,9 +82,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041EB8F022FB648700800ABB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				041EB8F122FB64C000800ABB /* FixerService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		04DC88D822F8822400C92415 = {
 			isa = PBXGroup;
 			children = (
+				041EB8F022FB648700800ABB /* Service */,
 				04DC890A22F8BF8400C92415 /* Util */,
 				04DC890722F8BF2900C92415 /* CustomView */,
 				04DC890622F8825C00C92415 /* Controllers */,
@@ -128,6 +141,7 @@
 		04DC890422F8823600C92415 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				041EB8F322FB657B00800ABB /* ConvertionResp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,12 +381,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041EB8F422FB657B00800ABB /* ConvertionResp.swift in Sources */,
 				04DC891322F9CA2F00C92415 /* SecondHalfCell.swift in Sources */,
 				04DC890922F8BF4C00C92415 /* CurveBg.swift in Sources */,
 				04DC88E522F8822400C92415 /* AppDelegate.swift in Sources */,
 				04DC890C22F8BFA500C92415 /* Constants.swift in Sources */,
 				04DC891622F9CBA600C92415 /* LandingVC.swift in Sources */,
 				04DC890F22F9CA1A00C92415 /* FirstHalfCell.swift in Sources */,
+				041EB8F222FB64C000800ABB /* FixerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

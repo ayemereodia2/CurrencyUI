@@ -12,8 +12,8 @@ class LandingVC: UIViewController,UITableViewDelegate,UITableViewDataSource  {
 
     @IBOutlet weak var tableLanding: UITableView!
     
-    let countries:[String] = ["USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL"]
-    
+//    let countries:[String] = ["USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL"]
+//
     
     
     override func viewDidLoad() {
@@ -43,8 +43,8 @@ class LandingVC: UIViewController,UITableViewDelegate,UITableViewDataSource  {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "FirstHalfCell", for: indexPath) as? FirstHalfCell
             {
-                cell.picker.delegate = self
-                cell.picker.dataSource = self
+               // cell.picker.delegate = self
+                //cell.picker.dataSource = self
                 return cell
                 
             }
@@ -75,26 +75,26 @@ class LandingVC: UIViewController,UITableViewDelegate,UITableViewDataSource  {
     }
 
 }
-
-extension LandingVC: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countries.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return countries[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        print(countries[row])
-        //fromCurrencyButtn.titleLabel?.text = countries[row]
-        //fromLabel.text = countries[row]
-    }
-}
+//
+//extension LandingVC: UIPickerViewDelegate, UIPickerViewDataSource {
+//
+//
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return countries.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+//        return countries[row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//
+//        print(countries[row])
+//        //fromCurrencyButtn.titleLabel?.text = countries[row]
+//        //fromLabel.text = countries[row]
+//    }
+//}

@@ -9,29 +9,35 @@
 import UIKit
 
 class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+    @IBOutlet weak var fromCurrencyButton: CurveBlackButton!
     @IBOutlet weak var fromLabel: UILabel!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var toCurrencyButton: CurveBlackButton!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var toCurrencyTextField: UITextField!
     @IBOutlet weak var fromCurrencyTextField: UITextField!
-    @IBOutlet weak var toCurrencyButton: UIButton!
-    @IBOutlet weak var fromCurrencyButtn: UIButton!
     
     @IBOutlet weak var midButton: UIButton!
     
+    var api = FixerService()
+    
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
-
-    let countries:[String] = ["USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL","USA","NGR","POL"]
+    var buttonToggle:Bool = false
+    var fromString = ""
+    var toString = ""
+    
+    let countries:[String] = ["GBP","JPY","CAD","USD","AUD","EUR","NGN","SEK","CFA"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         picker = UIPickerView.init()
         
-        let color1 = hexStringToUIColor(hex: "#0080FF")//2DDE9F
-        let color2 = hexStringToUIColor(hex: "#2DDE9F")//2DDE9F
+        let color1 = hexStringToUIColor(hex: "#0080FF")
+        let color2 = hexStringToUIColor(hex: "#2DDE9F")
 
         let attrs = [
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0),
@@ -60,41 +66,36 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
         toCurrencyTextField.delegate = self as UITextFieldDelegate
         toCurrencyTextField.keyboardType = .decimalPad
         
-    }
-    
-    @IBAction func FROM_CURRENCY__TAP_ACTION(_ sender: UIButton) {
-        //picker = UIPickerView.init()
-        //picker.delegate = self
-        //picker.dataSource = self
-        picker.backgroundColor = UIColor.white
-        picker.setValue(UIColor.black, forKey: "textColor")
-        //picker.autoresizingMask = .flexibleWidth
-        picker.contentMode = .scaleAspectFit
-        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.addSubview(picker)
-        
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.barStyle = .blackTranslucent
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-        //self.addSubview(toolBar)
-    }
-    
-    
-    @IBAction func TO_CURRENCY__TAP_ACTION(_ sender: UIButton) {
         picker = UIPickerView.init()
         picker.delegate = self
         picker.dataSource = self
         picker.backgroundColor = UIColor.white
         picker.setValue(UIColor.black, forKey: "textColor")
-        //picker.autoresizingMask = .flexibleWidth
+        picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .scaleAspectFit
         picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        self.addSubview(picker)
+        picker.isUserInteractionEnabled = true
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barStyle = .blackTranslucent
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-        //self.addSubview(toolBar)
+        
+        
+    }
+    
+    
+    
+    @IBAction func FROM_CURRENCY__TAP_ACTION(_ sender: UIButton) {
+        self.superview?.addSubview(picker)
+        self.superview?.addSubview(toolBar)
+        buttonToggle = true
+    }
+    
+    
+    @IBAction func TO_CURRENCY__TAP_ACTION(_ sender: UIButton) {
+        self.superview?.addSubview(picker)
+        self.superview?.addSubview(toolBar)
+        buttonToggle = false
     }
     
     
@@ -103,7 +104,52 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
         picker.removeFromSuperview()
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        fromString = fromCurrencyTextField.text!
+        toString = toCurrencyTextField.text!
+        
+        
+        
+    }
     
+    func setUpView(resp:ConvertionResp) {
+        
+        toCurrencyTextField.text = resp.result.description
+    }
+    
+    
+    @IBAction func convertValues(_ sender: Any) {
+        
+        self.spinner.startAnimating()
+        let qr = Query(from:"USD",to:"GBP",amount:25)
+        
+        api.convert(payload: qr) { (resp) in
+            
+            if let resp = resp {
+                self.spinner.stopAnimating()
+                self.setUpView(resp: resp)
+                
+            }
+            else{
+                self.spinner.stopAnimating()
+                self.showAlert()
+            }
+        }
+        
+        
+    }
+    
+    func showAlert() {
+    
+        let refreshAlert = UIAlertController(title: "Message", message: "Your Fixer.io subscripption does not allow this method", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (UIAlertAction) in
+            
+        }))
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(refreshAlert, animated: true, completion: nil)
+
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -119,8 +165,16 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         print(countries[row])
-        fromCurrencyButtn.titleLabel?.text = countries[row]
-        fromLabel.text = countries[row]
+        if buttonToggle {
+            fromCurrencyButton.setTitle(countries[row], for: .normal)
+            fromLabel.text = countries[row]
+        }
+        else{
+            toCurrencyButton.setTitle(countries[row], for: .normal)
+            toLabel.text = countries[row]
+        }
+        
+        
     }
     
 

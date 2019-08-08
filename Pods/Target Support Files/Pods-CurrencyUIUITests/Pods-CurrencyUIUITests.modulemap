@@ -1,0 +1,6 @@
+framework module Pods_CurrencyUIUITests {
+  umbrella header "Pods-CurrencyUIUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

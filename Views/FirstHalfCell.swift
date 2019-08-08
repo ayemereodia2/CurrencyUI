@@ -28,20 +28,25 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
     var buttonToggle:Bool = false
     var fromString = ""
     var toString = ""
-    
+    //sample currency codes
     let countries:[String] = ["GBP","JPY","CAD","USD","AUD","EUR","NGN","SEK","CFA"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUpCellView()
+        
+    }
+    
+    func setUpCellView() {
         
         picker = UIPickerView.init()
         
         let color1 = hexStringToUIColor(hex: "#0080FF")
         let color2 = hexStringToUIColor(hex: "#2DDE9F")
-
+        
         let attrs = [
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12.0),
-
+            
             NSAttributedString.Key.foregroundColor : color1,
             NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
         
@@ -50,7 +55,7 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
         let buttonTitleStr = NSMutableAttributedString(string:"Mid-market exchange rate at 13:38 UTC", attributes:attrs)
         attributedString.append(buttonTitleStr)
         midButton.setAttributedTitle(attributedString, for: [])
-
+        
         
         let textSearch="."
         let textToShow="Currency Calculator."
@@ -79,11 +84,7 @@ class FirstHalfCell: UITableViewCell,UITextFieldDelegate,UIPickerViewDelegate,UI
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barStyle = .blackTranslucent
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-        
-        
     }
-    
-    
     
     @IBAction func FROM_CURRENCY__TAP_ACTION(_ sender: UIButton) {
         self.superview?.addSubview(picker)

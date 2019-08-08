@@ -24,5 +24,3 @@ let SYMBOLS = BASE_URL + "&base=GBP&symbols=USD,AUD,CAD,PLN,MXN"
 let CONVERT = BASE_URL + "&from=\(from)&to=\(to)&amount=\(amount)"
 
 typealias conversionReturnCompletion = (ConvertionResp?)->()
-
-//http://data.fixer.io/api/convert?access_key=ce3e30efe9b04c54bdc8f8aeb2b258a6

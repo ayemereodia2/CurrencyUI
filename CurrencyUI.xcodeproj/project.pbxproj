@@ -124,7 +124,6 @@
 				04DC88EB22F8822500C92415 /* Assets.xcassets */,
 				04DC88ED22F8822500C92415 /* LaunchScreen.storyboard */,
 				04DC88F022F8822500C92415 /* Info.plist */,
-				04DC891522F9CBA600C92415 /* LandingVC.swift */,
 			);
 			path = CurrencyUI;
 			sourceTree = "<group>";
@@ -160,6 +159,7 @@
 		04DC890622F8825C00C92415 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04DC891522F9CBA600C92415 /* LandingVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

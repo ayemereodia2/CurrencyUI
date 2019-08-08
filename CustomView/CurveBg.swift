@@ -47,7 +47,6 @@ class FieldView: UITextField {
     
     
     override func awakeFromNib() {
-        //layer.backgroundColor = UIColor.white.cgColor
         layer.cornerRadius = 5
     }
 }
